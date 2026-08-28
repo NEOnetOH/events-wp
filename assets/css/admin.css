@@ -1,0 +1,71 @@
+.eswp-settings .eswp-connection-card {
+	margin: 1.25rem 0 1.5rem;
+	padding: 1rem 1.25rem;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-left: 4px solid #1b4f72;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+}
+
+.eswp-settings .eswp-connection-card h2 {
+	margin: 0 0 0.5rem;
+	font-size: 1rem;
+}
+
+.eswp-settings .eswp-connection-card__host code {
+	font-size: 1.15rem;
+}
+
+.eswp-settings .eswp-connection-card__empty {
+	margin: 0;
+	color: #646970;
+}
+
+.eswp-settings .eswp-connection-card__badge {
+	display: inline-block;
+	margin-left: 0.5rem;
+	padding: 0.1rem 0.45rem;
+	border-radius: 3px;
+	background: #edfaef;
+	color: #1e7e34;
+	font-size: 12px;
+	font-weight: 600;
+	vertical-align: middle;
+}
+
+.eswp-settings .eswp-connect-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	align-items: center;
+	margin: 1rem 0 0.35rem;
+}
+
+.eswp-settings .eswp-disconnect-form {
+	margin: 0;
+}
+
+.eswp-settings .eswp-actions {
+	margin-top: 2rem;
+	padding-top: 1rem;
+	border-top: 1px solid #dcdcde;
+}
+
+.eswp-settings .eswp-action-status {
+	min-height: 1.5em;
+}
+
+.eswp-settings .eswp-error,
+.eswp-settings .eswp-action-status.is-error {
+	color: #b32d2e;
+}
+
+.eswp-settings .eswp-action-status.is-success {
+	color: #1e7e34;
+}
+
+.eswp-settings .eswp-color {
+	width: 4rem;
+	height: 2rem;
+	padding: 0;
+}
