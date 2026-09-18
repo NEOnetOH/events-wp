@@ -1,6 +1,6 @@
 <?php
 /**
- * OAuth client-credentials client for any Event Scheduler v2 instance.
+ * OAuth client-credentials client for any events.apptoolstack.com v2 instance.
  *
  * @package EventScheduleWp
  */
@@ -90,7 +90,7 @@ class Eswp_Api_Client {
 	 */
 	public function list_events( array $args = array() ): array|WP_Error {
 		if ( empty( $this->group_ids() ) ) {
-			return new WP_Error( 'eswp_missing_groups', __( 'Enter the Event Scheduler group ID.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_missing_groups', __( 'Enter the events.apptoolstack.com group ID.', 'event-schedule-wp' ) );
 		}
 
 		$filters = $this->event_filters( $args );
@@ -157,7 +157,7 @@ class Eswp_Api_Client {
 	 */
 	public function request( string $method, string $path, array $query = array() ): array|WP_Error {
 		if ( 'GET' !== strtoupper( $method ) ) {
-			return new WP_Error( 'eswp_method', __( 'Only GET requests are allowed to the Event Scheduler API.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_method', __( 'Only GET requests are allowed to the events.apptoolstack.com API.', 'event-schedule-wp' ) );
 		}
 
 		$token = $this->get_access_token();
@@ -176,7 +176,7 @@ class Eswp_Api_Client {
 		}
 
 		if ( ! Eswp_Security::is_safe_remote_url( $url, true ) ) {
-			return new WP_Error( 'eswp_unsafe_url', __( 'The Event Scheduler URL is not a public HTTPS address.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'event-schedule-wp' ) );
 		}
 
 		$response = wp_remote_request(
@@ -244,7 +244,7 @@ class Eswp_Api_Client {
 		$client_secret = (string) ( $this->settings['client_secret'] ?? '' );
 
 		if ( '' === $client_id || '' === $client_secret ) {
-			return new WP_Error( 'eswp_missing_credentials', __( 'Enter the Event Scheduler API key and secret.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_missing_credentials', __( 'Enter the events.apptoolstack.com API key and secret.', 'event-schedule-wp' ) );
 		}
 
 		$token_path = Eswp_Security::sanitize_api_path( (string) ( $this->settings['oauth_path'] ?? '/oauth/token' ), '/oauth/token' );
@@ -262,7 +262,7 @@ class Eswp_Api_Client {
 		}
 
 		if ( ! Eswp_Security::is_safe_remote_url( $token_url, true ) ) {
-			return new WP_Error( 'eswp_unsafe_url', __( 'The Event Scheduler URL is not a public HTTPS address.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'event-schedule-wp' ) );
 		}
 
 		$response = wp_remote_post(
@@ -417,7 +417,7 @@ class Eswp_Api_Client {
 		if ( '' === $base ) {
 			return new WP_Error(
 				'eswp_missing_base_url',
-				__( 'Enter your Event Scheduler URL, for example https://events.districta.com.', 'event-schedule-wp' )
+				__( 'Enter your events.apptoolstack.com URL, for example https://events.districta.com.', 'event-schedule-wp' )
 			);
 		}
 

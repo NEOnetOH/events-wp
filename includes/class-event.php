@@ -1,6 +1,6 @@
 <?php
 /**
- * Normalized event DTO from the Event Scheduler API.
+ * Normalized event DTO from the events.apptoolstack.com API.
  *
  * @package EventScheduleWp
  */

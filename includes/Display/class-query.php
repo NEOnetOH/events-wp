@@ -1,6 +1,6 @@
 <?php
 /**
- * Resolves upcoming events from the live Event Scheduler API.
+ * Resolves upcoming events from the live events.apptoolstack.com API.
  *
  * @package EventScheduleWp
  */
@@ -58,7 +58,37 @@ class Eswp_Query {
 		$settings = Eswp_Settings::get();
 		$limit    = isset( $args['limit'] ) ? min( 50, max( 1, (int) $args['limit'] ) ) : (int) $settings['event_limit'];
 
+		if ( array_key_exists( 'category_ids', $args ) ) {
+			$args['category_ids'] = self::normalize_id_list( $args['category_ids'] );
+		}
+
 		return self::from_api( $settings, $limit, $args );
+	}
+
+	/**
+	 * Normalize a comma-separated string or array of IDs into a unique int[].
+	 *
+	 * @param mixed $value
+	 * @return int[]
+	 */
+	public static function normalize_id_list( mixed $value ): array {
+		if ( is_array( $value ) ) {
+			$parts = $value;
+		} elseif ( is_string( $value ) || is_numeric( $value ) ) {
+			$parts = preg_split( '/[\s,]+/', (string) $value ) ?: array();
+		} else {
+			return array();
+		}
+
+		$ids = array();
+		foreach ( $parts as $part ) {
+			$id = (int) $part;
+			if ( $id > 0 ) {
+				$ids[] = $id;
+			}
+		}
+
+		return array_values( array_unique( $ids ) );
 	}
 
 	/**

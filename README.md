@@ -1,19 +1,21 @@
-# Event Scheduler for WordPress
+# events.apptoolstack.com for WordPress
 
-A secure WordPress plugin that displays upcoming events from the Event Scheduler product API. It does not create events, categories, or venues in WordPress.
+A secure WordPress plugin that displays upcoming events from the [events.apptoolstack.com](https://events.apptoolstack.com) API. It does not create events, categories, or venues in WordPress.
 
 **Customer deploy:** see [INSTALL.md](INSTALL.md).
 
+WordPress.org updates (after the directory listing is approved) come from wordpress.org, not from this GitHub repository. Tag a release; the deploy workflow copies it to SVN when `SVN_USERNAME` and `SVN_PASSWORD` secrets are set.
+
 ## How it works
 
-The plugin needs four settings from Event Scheduler:
+The plugin needs four settings from events.apptoolstack.com:
 
-1. **Event Scheduler URL** — the customer host (`https://events.districta.org`)
+1. **Host URL** — the customer host (`https://events.districta.org`)
 2. **API key** — OAuth client ID
 3. **Secret** — OAuth client secret
 4. **Group ID** — which group’s public events to list
 
-Enter those on **Settings → Event Scheduler** (or use Connect to fill them in), then publish with the **Event Scheduler: Upcoming Events** widget.
+Enter those on **Settings → events.apptoolstack.com** (or use Connect to fill them in), then publish with the **events.apptoolstack.com: Upcoming Events** widget.
 
 The widget reads the live Events API. There is no local event editor and no required sync job.
 
@@ -31,7 +33,7 @@ The widget reads the live Events API. There is no local event editor and no requ
 
 - WordPress 6.5+
 - PHP 8.1+
-- Event Scheduler 1.136.0+ with `/api/v2` and the WordPress connect handshake
+- events.apptoolstack.com 1.136.0+ with `/api/v2` and the WordPress connect handshake
 
 ## Branches
 

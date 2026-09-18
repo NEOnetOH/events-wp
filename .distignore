@@ -1,0 +1,15 @@
+.git
+.github
+.wordpress-org
+.gitignore
+.gitattributes
+.distignore
+.DS_Store
+.idea
+.vscode
+docs
+dist
+INSTALL.md
+README.md
+*.zip
+Thumbs.db

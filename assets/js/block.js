@@ -52,6 +52,14 @@
 								setAttributes({ category: value });
 							},
 						}),
+						el(TextControl, {
+							label: __('Category IDs (comma-separated)', 'event-schedule-wp'),
+							help: __('Limit this block to specific categories. Overrides the global setting; leave blank to use it.', 'event-schedule-wp'),
+							value: attributes.categoryIds,
+							onChange: function (value) {
+								setAttributes({ categoryIds: value });
+							},
+						}),
 						el(ToggleControl, {
 							label: __('Show location', 'event-schedule-wp'),
 							checked: attributes.showLocation,
@@ -64,6 +72,13 @@
 							checked: attributes.showCategory,
 							onChange: function (value) {
 								setAttributes({ showCategory: value });
+							},
+						}),
+						el(ToggleControl, {
+							label: __('Open event links in a new tab', 'event-schedule-wp'),
+							checked: attributes.openInNewTab,
+							onChange: function (value) {
+								setAttributes({ openInNewTab: value });
 							},
 						})
 					)

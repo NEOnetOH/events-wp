@@ -35,7 +35,16 @@ class Eswp_Plugin {
 		$block->register();
 
 		add_action( 'widgets_init', array( $this, 'register_widget' ) );
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 		add_action( 'init', array( $this, 'register_frontend_style' ) );
+	}
+
+	public function load_textdomain(): void {
+		load_plugin_textdomain(
+			'event-schedule-wp',
+			false,
+			dirname( plugin_basename( ESWP_FILE ) ) . '/languages'
+		);
 	}
 
 	public static function activate(): void {
