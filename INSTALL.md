@@ -29,7 +29,7 @@ The host URL is the scheduler host, not the WordPress site. You can paste `event
 ## 1. Install the plugin
 
 1. In WordPress, go to **Plugins → Add New Plugin → Upload Plugin**.
-2. Upload `event-schedule-wp-1.3.0.zip`.
+2. Upload `event-schedule-wp-1.3.1.zip`.
 3. Click **Install Now**, then **Activate**.
 
 The plugin name in the list is **events.apptoolstack.com**.

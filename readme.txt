@@ -1,10 +1,10 @@
 === events.apptoolstack.com ===
-Contributors: neonet
+Contributors: amelick
 Tags: events, calendar, upcoming events, widget
 Requires at least: 6.5
 Tested up to: 6.8
 Requires PHP: 8.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,9 @@ This plugin contacts the events.apptoolstack.com host that a site administrator 
 Service terms: [events.apptoolstack.com](https://events.apptoolstack.com)
 
 == Changelog ==
+
+= 1.3.1 =
+* Plugin URI is the GitHub repository; Author URI is neonet.org. WordPress.org requires those two URLs to be different.
 
 = 1.3.0 =
 * Public name is events.apptoolstack.com. Folder, text domain, and option keys stay event-schedule-wp.
