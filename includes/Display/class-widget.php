@@ -49,14 +49,14 @@ class Eswp_Widget extends WP_Widget {
 		$html   = Eswp_Query::render_template(
 			'upcoming-list.php',
 			array(
-				'events'          => $events,
-				'settings'        => $settings,
-				'title'           => $title,
-				'calendar_url'    => (string) $settings['calendar_url'],
-				'show_location'   => ! empty( $settings['show_location'] ),
-				'show_category'   => ! empty( $settings['show_category'] ),
-				'show_ceu'        => ! empty( $settings['show_ceu'] ),
-				'open_in_new_tab' => $open_in_new_tab,
+				'eswp_events'          => $events,
+				'eswp_settings'        => $settings,
+				'eswp_title'           => $title,
+				'eswp_calendar_url'    => (string) $settings['calendar_url'],
+				'eswp_show_location'   => ! empty( $settings['show_location'] ),
+				'eswp_show_category'   => ! empty( $settings['show_category'] ),
+				'eswp_show_ceu'        => ! empty( $settings['show_ceu'] ),
+				'eswp_open_in_new_tab' => $open_in_new_tab,
 			)
 		);
 

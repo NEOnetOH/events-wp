@@ -72,7 +72,20 @@ class Eswp_Connect {
 			$this->redirect_settings( 'unsafe_url' );
 		}
 
-		wp_redirect( $authorize );
+		$host = wp_parse_url( $authorize, PHP_URL_HOST );
+		if ( ! is_string( $host ) || '' === $host ) {
+			$this->redirect_settings( 'unsafe_url' );
+		}
+
+		add_filter(
+			'allowed_redirect_hosts',
+			static function ( array $hosts ) use ( $host ): array {
+				$hosts[] = $host;
+				return array_values( array_unique( $hosts ) );
+			}
+		);
+
+		wp_safe_redirect( $authorize );
 		exit;
 	}
 
@@ -92,6 +105,7 @@ class Eswp_Connect {
 			return;
 		}
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- OAuth callback; CSRF is the hashed state stored in a user-specific transient at connect start.
 		$page   = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( (string) $_GET['page'] ) ) : '';
 		$action = isset( $_GET['eswp_oauth'] ) ? sanitize_key( wp_unslash( (string) $_GET['eswp_oauth'] ) ) : '';
 		if ( 'event-schedule-wp' !== $page || 'callback' !== $action ) {
@@ -104,6 +118,7 @@ class Eswp_Connect {
 
 		$state = isset( $_GET['state'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['state'] ) ) : '';
 		$code  = isset( $_GET['code'] ) ? sanitize_text_field( wp_unslash( (string) $_GET['code'] ) ) : '';
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		$saved = get_transient( $this->state_key() );
 
 		if ( ! is_array( $saved ) || '' === $state || ! hash_equals( (string) ( $saved['state'] ?? '' ), $state ) ) {
@@ -149,7 +164,7 @@ class Eswp_Connect {
 			return;
 		}
 
-		$status = isset( $_GET['eswp'] ) ? sanitize_key( wp_unslash( (string) $_GET['eswp'] ) ) : '';
+		$status = isset( $_GET['eswp'] ) ? sanitize_key( wp_unslash( (string) $_GET['eswp'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display-only status from our own redirect.
 		if ( '' === $status ) {
 			return;
 		}

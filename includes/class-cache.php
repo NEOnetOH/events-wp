@@ -64,25 +64,27 @@ class Eswp_Cache {
 		}
 
 		delete_transient( ESWP_TOKEN_TRANSIENT );
-
-		global $wpdb;
-		$wpdb->query(
-			$wpdb->prepare(
-				"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
-				$wpdb->esc_like( '_transient_' . ESWP_TOKEN_TRANSIENT ) . '%',
-				$wpdb->esc_like( '_transient_timeout_' . ESWP_TOKEN_TRANSIENT ) . '%'
-			)
-		);
+		self::delete_prefixed_transients( ESWP_TOKEN_TRANSIENT );
 	}
 
 	public static function clear_events(): void {
+		self::delete_prefixed_transients( ESWP_EVENTS_TRANSIENT );
+	}
+
+	/**
+	 * Delete transients whose names start with a plugin prefix.
+	 */
+	private static function delete_prefixed_transients( string $prefix ): void {
 		global $wpdb;
 
-		$wpdb->query(
+		$like_value   = $wpdb->esc_like( '_transient_' . $prefix ) . '%';
+		$like_timeout = $wpdb->esc_like( '_transient_timeout_' . $prefix ) . '%';
+
+		$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Prefix wipe of plugin transients; no object-cache API for LIKE deletes.
 			$wpdb->prepare(
 				"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
-				$wpdb->esc_like( '_transient_' . ESWP_EVENTS_TRANSIENT ) . '%',
-				$wpdb->esc_like( '_transient_timeout_' . ESWP_EVENTS_TRANSIENT ) . '%'
+				$like_value,
+				$like_timeout
 			)
 		);
 	}

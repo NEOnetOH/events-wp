@@ -4,7 +4,7 @@ Tags: events, calendar, upcoming events, widget
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,9 @@ This plugin contacts the events.apptoolstack.com host that a site administrator 
 Service terms: [events.apptoolstack.com](https://events.apptoolstack.com)
 
 == Changelog ==
+
+= 1.3.3 =
+* Plugin Check: escape template output correctly, use wp_safe_redirect for Connect, and prefix template variables.
 
 = 1.3.2 =
 * Tested up to WordPress 7.1.

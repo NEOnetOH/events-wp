@@ -4,88 +4,86 @@
  *
  * @package EventScheduleWp
  *
- * @var Eswp_Event           $event
- * @var array<string, mixed> $settings
- * @var DateTimeImmutable    $now
- * @var bool                 $show_location
- * @var bool                 $show_category
- * @var bool                 $show_ceu
- * @var bool                 $open_in_new_tab
+ * @var Eswp_Event           $eswp_event
+ * @var array<string, mixed> $eswp_settings
+ * @var DateTimeImmutable    $eswp_now
+ * @var bool                 $eswp_show_location
+ * @var bool                 $eswp_show_category
+ * @var bool                 $eswp_show_ceu
+ * @var bool                 $eswp_open_in_new_tab
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$open_in_new_tab = isset( $open_in_new_tab ) ? (bool) $open_in_new_tab : false;
-$link_target     = $open_in_new_tab ? ' target="_blank" rel="noopener noreferrer"' : '';
+$eswp_open_in_new_tab = ! empty( $eswp_open_in_new_tab );
+$eswp_slot            = $eswp_event->next_slot( $eswp_now );
+$eswp_occurrence      = $eswp_slot['starts_at'] instanceof DateTimeImmutable ? $eswp_slot['starts_at'] : $eswp_event->starts_at;
+$eswp_ends_at         = $eswp_slot['ends_at'] instanceof DateTimeImmutable ? $eswp_slot['ends_at'] : $eswp_event->ends_at;
+$eswp_permalink       = '' !== $eswp_event->url ? $eswp_event->url : '';
+$eswp_duration        = Eswp_Event::duration_label( $eswp_occurrence, $eswp_ends_at );
+$eswp_when_line       = '';
+$eswp_length_line     = '';
 
-$slot        = $event->next_slot( $now );
-$occurrence  = $slot['starts_at'] instanceof DateTimeImmutable ? $slot['starts_at'] : $event->starts_at;
-$ends_at     = $slot['ends_at'] instanceof DateTimeImmutable ? $slot['ends_at'] : $event->ends_at;
-$permalink   = '' !== $event->url ? $event->url : '';
-$duration    = Eswp_Event::duration_label( $occurrence, $ends_at );
-$when_line   = '';
-$length_line = '';
-
-if ( $occurrence instanceof DateTimeImmutable ) {
-	$when_line = $occurrence->format( 'D, M j' ) . ' · ' . $occurrence->format( 'g:i a' );
-	if ( $ends_at instanceof DateTimeImmutable ) {
-		$when_line .= ' – ' . $ends_at->format( 'g:i a' );
+if ( $eswp_occurrence instanceof DateTimeImmutable ) {
+	$eswp_when_line = $eswp_occurrence->format( 'D, M j' ) . ' · ' . $eswp_occurrence->format( 'g:i a' );
+	if ( $eswp_ends_at instanceof DateTimeImmutable ) {
+		$eswp_when_line .= ' – ' . $eswp_ends_at->format( 'g:i a' );
 	}
 
-	if ( '' !== $duration ) {
-		$length_line = sprintf(
+	if ( '' !== $eswp_duration ) {
+		$eswp_length_line = sprintf(
 			/* translators: 1: duration such as 1h, 2: weekday name */
 			__( '%1$s (%2$s)', 'events-apptoolstack-com' ),
-			$duration,
-			$occurrence->format( 'l' )
+			$eswp_duration,
+			$eswp_occurrence->format( 'l' )
 		);
 	} else {
-		$length_line = $occurrence->format( 'l' );
+		$eswp_length_line = $eswp_occurrence->format( 'l' );
 	}
 }
 ?>
 <li class="eswp-event">
 	<div class="eswp-event__date" aria-hidden="true">
 		<div class="eswp-event__date-frame">
-			<span class="eswp-event__day"><?php echo esc_html( $occurrence ? $occurrence->format( 'd' ) : '' ); ?></span>
-			<span class="eswp-event__month"><?php echo esc_html( $occurrence ? $occurrence->format( 'M' ) : '' ); ?></span>
+			<span class="eswp-event__day"><?php echo esc_html( $eswp_occurrence ? $eswp_occurrence->format( 'd' ) : '' ); ?></span>
+			<span class="eswp-event__month"><?php echo esc_html( $eswp_occurrence ? $eswp_occurrence->format( 'M' ) : '' ); ?></span>
 		</div>
 	</div>
 	<div class="eswp-event__body">
 		<h3 class="eswp-event__title">
-			<?php if ( $permalink ) : ?>
-				<a href="<?php echo esc_url( $permalink ); ?>"<?php echo $link_target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $event->title ); ?></a>
+			<?php if ( $eswp_permalink ) : ?>
+				<a href="<?php echo esc_url( $eswp_permalink ); ?>"<?php if ( $eswp_open_in_new_tab ) : ?> target="_blank" rel="noopener noreferrer"<?php endif; ?>><?php echo esc_html( $eswp_event->title ); ?></a>
 			<?php else : ?>
-				<?php echo esc_html( $event->title ); ?>
+				<?php echo esc_html( $eswp_event->title ); ?>
 			<?php endif; ?>
 		</h3>
-		<?php if ( '' !== $when_line ) : ?>
+		<?php if ( '' !== $eswp_when_line ) : ?>
 			<p class="eswp-event__when">
 				<span class="eswp-event__when-icon" aria-hidden="true"></span>
-				<span><?php echo esc_html( $when_line ); ?></span>
+				<span><?php echo esc_html( $eswp_when_line ); ?></span>
 			</p>
 		<?php endif; ?>
-		<?php if ( '' !== $length_line ) : ?>
+		<?php if ( '' !== $eswp_length_line ) : ?>
 			<p class="eswp-event__duration">
 				<span class="eswp-event__duration-icon" aria-hidden="true"></span>
-				<span><?php echo esc_html( $length_line ); ?></span>
+				<span><?php echo esc_html( $eswp_length_line ); ?></span>
 			</p>
 		<?php endif; ?>
-		<?php if ( $show_location && '' !== $event->venue_name ) : ?>
-			<p class="eswp-event__meta"><?php echo esc_html( $event->venue_name ); ?></p>
+		<?php if ( $eswp_show_location && '' !== $eswp_event->venue_name ) : ?>
+			<p class="eswp-event__meta"><?php echo esc_html( $eswp_event->venue_name ); ?></p>
 		<?php endif; ?>
-		<?php if ( $show_category && '' !== $event->category_name ) : ?>
-			<p class="eswp-event__category"><?php echo esc_html( $event->category_name ); ?></p>
+		<?php if ( $eswp_show_category && '' !== $eswp_event->category_name ) : ?>
+			<p class="eswp-event__category"><?php echo esc_html( $eswp_event->category_name ); ?></p>
 		<?php endif; ?>
-		<?php if ( $show_ceu && null !== $event->ceu_credits ) : ?>
+		<?php if ( $eswp_show_ceu && null !== $eswp_event->ceu_credits ) : ?>
 			<p class="eswp-event__ceu">
 				<?php
 				printf(
 					/* translators: %s: CEU credit amount */
 					esc_html__( 'CEU: %s', 'events-apptoolstack-com' ),
-					esc_html( (string) $event->ceu_credits )
+					esc_html( (string) $eswp_event->ceu_credits )
 				);
 				?>
 			</p>
