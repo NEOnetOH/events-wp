@@ -29,12 +29,12 @@ The host URL is the scheduler host, not the WordPress site. You can paste `event
 ## 1. Install the plugin
 
 1. In WordPress, go to **Plugins → Add New Plugin → Upload Plugin**.
-2. Upload `event-schedule-wp-1.3.1.zip`.
+2. Upload `event-schedule-wp-1.3.2.zip`.
 3. Click **Install Now**, then **Activate**.
 
 The plugin name in the list is **events.apptoolstack.com**.
 
-If you prefer the filesystem: unzip so the folder is `wp-content/plugins/event-schedule-wp/`, then activate it.
+If you prefer the filesystem: unzip so the folder is `wp-content/plugins/events-apptoolstack-com/`, then activate it.
 
 After the plugin is in the WordPress.org directory, customers can also install it from **Plugins → Add New** by searching for events.apptoolstack.com. Sites installed from the directory receive updates in wp-admin. Zip-installed copies do not switch automatically.
 

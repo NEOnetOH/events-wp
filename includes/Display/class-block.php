@@ -28,8 +28,8 @@ class Eswp_Block {
 			'event-schedule-wp/upcoming',
 			array(
 				'api_version'     => 3,
-				'title'           => __( 'Upcoming Events', 'event-schedule-wp' ),
-				'description'     => __( 'Live upcoming events from events.apptoolstack.com.', 'event-schedule-wp' ),
+				'title'           => __( 'Upcoming Events', 'events-apptoolstack-com' ),
+				'description'     => __( 'Live upcoming events from events.apptoolstack.com.', 'events-apptoolstack-com' ),
 				'category'        => 'widgets',
 				'icon'            => 'calendar-alt',
 				'editor_script'   => 'eswp-block',
@@ -88,7 +88,7 @@ class Eswp_Block {
 				'category_ids'    => sanitize_text_field( (string) ( $attributes['categoryIds'] ?? '' ) ),
 				'show_location'   => ! empty( $attributes['showLocation'] ) ? '1' : '0',
 				'show_category'   => ! empty( $attributes['showCategory'] ) ? '1' : '0',
-				'title'           => sanitize_text_field( (string) ( $attributes['title'] ?? __( 'Upcoming Events', 'event-schedule-wp' ) ) ),
+				'title'           => sanitize_text_field( (string) ( $attributes['title'] ?? __( 'Upcoming Events', 'events-apptoolstack-com' ) ) ),
 				'open_in_new_tab' => ! empty( $attributes['openInNewTab'] ) ? '1' : '0',
 			)
 		);

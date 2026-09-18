@@ -37,7 +37,7 @@ if ( $occurrence instanceof DateTimeImmutable ) {
 	if ( '' !== $duration ) {
 		$length_line = sprintf(
 			/* translators: 1: duration such as 1h, 2: weekday name */
-			__( '%1$s (%2$s)', 'event-schedule-wp' ),
+			__( '%1$s (%2$s)', 'events-apptoolstack-com' ),
 			$duration,
 			$occurrence->format( 'l' )
 		);
@@ -84,7 +84,7 @@ if ( $occurrence instanceof DateTimeImmutable ) {
 				<?php
 				printf(
 					/* translators: %s: CEU credit amount */
-					esc_html__( 'CEU: %s', 'event-schedule-wp' ),
+					esc_html__( 'CEU: %s', 'events-apptoolstack-com' ),
 					esc_html( (string) $event->ceu_credits )
 				);
 				?>

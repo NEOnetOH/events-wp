@@ -2,9 +2,9 @@
 Contributors: amelick
 Tags: events, calendar, upcoming events, widget
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -75,11 +75,15 @@ Service terms: [events.apptoolstack.com](https://events.apptoolstack.com)
 
 == Changelog ==
 
+= 1.3.2 =
+* Tested up to WordPress 7.1.
+* Text domain is events-apptoolstack-com so it matches the WordPress.org plugin slug.
+
 = 1.3.1 =
 * Plugin URI is the GitHub repository; Author URI is neonet.org. WordPress.org requires those two URLs to be different.
 
 = 1.3.0 =
-* Public name is events.apptoolstack.com. Folder, text domain, and option keys stay event-schedule-wp.
+* Public name is events.apptoolstack.com. Option keys stay eswp_*.
 * WordPress.org packaging: privacy section, LICENSE, directory assets, and GitHub Action deploy to SVN.
 * Uninstall no longer touches leftover post types from an older sync version.
 

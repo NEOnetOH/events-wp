@@ -57,7 +57,7 @@ $now        = new DateTimeImmutable( 'now', new DateTimeZone( $timezone ) );
 	<?php if ( '' !== $calendar_url ) : ?>
 		<p class="eswp-upcoming__footer">
 			<a class="eswp-upcoming__calendar-link" href="<?php echo esc_url( $calendar_url ); ?>"<?php echo $link_target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
-				<?php esc_html_e( 'View Calendar', 'event-schedule-wp' ); ?>
+				<?php esc_html_e( 'View Calendar', 'events-apptoolstack-com' ); ?>
 			</a>
 		</p>
 	<?php endif; ?>

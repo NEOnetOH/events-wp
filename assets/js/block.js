@@ -19,16 +19,16 @@
 					{},
 					el(
 						PanelBody,
-						{ title: __('Upcoming events', 'event-schedule-wp'), initialOpen: true },
+						{ title: __('Upcoming events', 'events-apptoolstack-com'), initialOpen: true },
 						el(TextControl, {
-							label: __('Title', 'event-schedule-wp'),
+							label: __('Title', 'events-apptoolstack-com'),
 							value: attributes.title,
 							onChange: function (value) {
 								setAttributes({ title: value });
 							},
 						}),
 						el(RangeControl, {
-							label: __('Number of events', 'event-schedule-wp'),
+							label: __('Number of events', 'events-apptoolstack-com'),
 							min: 1,
 							max: 20,
 							value: attributes.limit,
@@ -37,7 +37,7 @@
 							},
 						}),
 						el(RangeControl, {
-							label: __('Days ahead (0 = no date cap)', 'event-schedule-wp'),
+							label: __('Days ahead (0 = no date cap)', 'events-apptoolstack-com'),
 							min: 0,
 							max: 365,
 							value: attributes.days,
@@ -46,36 +46,36 @@
 							},
 						}),
 						el(TextControl, {
-							label: __('Category name', 'event-schedule-wp'),
+							label: __('Category name', 'events-apptoolstack-com'),
 							value: attributes.category,
 							onChange: function (value) {
 								setAttributes({ category: value });
 							},
 						}),
 						el(TextControl, {
-							label: __('Category IDs (comma-separated)', 'event-schedule-wp'),
-							help: __('Limit this block to specific categories. Overrides the global setting; leave blank to use it.', 'event-schedule-wp'),
+							label: __('Category IDs (comma-separated)', 'events-apptoolstack-com'),
+							help: __('Limit this block to specific categories. Overrides the global setting; leave blank to use it.', 'events-apptoolstack-com'),
 							value: attributes.categoryIds,
 							onChange: function (value) {
 								setAttributes({ categoryIds: value });
 							},
 						}),
 						el(ToggleControl, {
-							label: __('Show location', 'event-schedule-wp'),
+							label: __('Show location', 'events-apptoolstack-com'),
 							checked: attributes.showLocation,
 							onChange: function (value) {
 								setAttributes({ showLocation: value });
 							},
 						}),
 						el(ToggleControl, {
-							label: __('Show category', 'event-schedule-wp'),
+							label: __('Show category', 'events-apptoolstack-com'),
 							checked: attributes.showCategory,
 							onChange: function (value) {
 								setAttributes({ showCategory: value });
 							},
 						}),
 						el(ToggleControl, {
-							label: __('Open event links in a new tab', 'event-schedule-wp'),
+							label: __('Open event links in a new tab', 'events-apptoolstack-com'),
 							checked: attributes.openInNewTab,
 							onChange: function (value) {
 								setAttributes({ openInNewTab: value });
