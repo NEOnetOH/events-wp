@@ -23,7 +23,7 @@ class Eswp_Connect {
 
 	public function start(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to do that.', 'event-schedule-wp' ) );
+			wp_die( esc_html__( 'You do not have permission to do that.', 'events-apptoolstack-com' ) );
 		}
 
 		check_admin_referer( 'eswp_connect_start' );
@@ -78,7 +78,7 @@ class Eswp_Connect {
 
 	public function disconnect(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_die( esc_html__( 'You do not have permission to do that.', 'event-schedule-wp' ) );
+			wp_die( esc_html__( 'You do not have permission to do that.', 'events-apptoolstack-com' ) );
 		}
 
 		check_admin_referer( 'eswp_disconnect' );
@@ -155,13 +155,13 @@ class Eswp_Connect {
 		}
 
 		$messages = array(
-			'connected'       => array( 'success', __( 'Connected to events.apptoolstack.com. The API key, secret, and group ID were saved.', 'event-schedule-wp' ) ),
-			'disconnected'    => array( 'success', __( 'Disconnected. API credentials were removed from this WordPress site.', 'event-schedule-wp' ) ),
-			'missing_url'     => array( 'error', __( 'Enter a public events.apptoolstack.com URL first, then click Connect.', 'event-schedule-wp' ) ),
-			'unsafe_url'      => array( 'error', __( 'That events.apptoolstack.com URL is not a public HTTPS address.', 'event-schedule-wp' ) ),
-			'denied'          => array( 'error', __( 'The events.apptoolstack.com admin cancelled the connection.', 'event-schedule-wp' ) ),
-			'bad_state'       => array( 'error', __( 'The connection expired or the request did not match this WordPress site. Try Connect again.', 'event-schedule-wp' ) ),
-			'missing_code'    => array( 'error', __( 'events.apptoolstack.com did not return an authorization code.', 'event-schedule-wp' ) ),
+			'connected'       => array( 'success', __( 'Connected to events.apptoolstack.com. The API key, secret, and group ID were saved.', 'events-apptoolstack-com' ) ),
+			'disconnected'    => array( 'success', __( 'Disconnected. API credentials were removed from this WordPress site.', 'events-apptoolstack-com' ) ),
+			'missing_url'     => array( 'error', __( 'Enter a public events.apptoolstack.com URL first, then click Connect.', 'events-apptoolstack-com' ) ),
+			'unsafe_url'      => array( 'error', __( 'That events.apptoolstack.com URL is not a public HTTPS address.', 'events-apptoolstack-com' ) ),
+			'denied'          => array( 'error', __( 'The events.apptoolstack.com admin cancelled the connection.', 'events-apptoolstack-com' ) ),
+			'bad_state'       => array( 'error', __( 'The connection expired or the request did not match this WordPress site. Try Connect again.', 'events-apptoolstack-com' ) ),
+			'missing_code'    => array( 'error', __( 'events.apptoolstack.com did not return an authorization code.', 'events-apptoolstack-com' ) ),
 			'exchange_failed' => array( 'error', $this->stored_error_message() ),
 		);
 
@@ -182,7 +182,7 @@ class Eswp_Connect {
 	private function exchange( string $base, string $code, string $verifier, string $redirect_uri ): array|WP_Error {
 		$url = $base . '/wordpress/exchange';
 		if ( ! Eswp_Security::is_safe_remote_url( $url, true ) ) {
-			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'events-apptoolstack-com' ) );
 		}
 
 		$response = wp_remote_post(
@@ -216,7 +216,7 @@ class Eswp_Connect {
 				'eswp_exchange',
 				sprintf(
 					/* translators: %d: HTTP status */
-					__( 'events.apptoolstack.com did not issue credentials (HTTP %d). Confirm this instance supports WordPress connect.', 'event-schedule-wp' ),
+					__( 'events.apptoolstack.com did not issue credentials (HTTP %d). Confirm this instance supports WordPress connect.', 'events-apptoolstack-com' ),
 					$code_http
 				)
 			);
@@ -228,7 +228,7 @@ class Eswp_Connect {
 		}
 
 		if ( empty( $group_ids ) ) {
-			return new WP_Error( 'eswp_exchange', __( 'events.apptoolstack.com did not return any group IDs.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_exchange', __( 'events.apptoolstack.com did not return any group IDs.', 'events-apptoolstack-com' ) );
 		}
 
 		return array(
@@ -278,7 +278,7 @@ class Eswp_Connect {
 
 		return is_string( $message ) && '' !== $message
 			? $message
-			: __( 'Could not exchange the authorization code for API credentials.', 'event-schedule-wp' );
+			: __( 'Could not exchange the authorization code for API credentials.', 'events-apptoolstack-com' );
 	}
 
 	private function base64_url_encode( string $raw ): string {

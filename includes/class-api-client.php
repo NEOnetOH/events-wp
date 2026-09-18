@@ -41,7 +41,7 @@ class Eswp_Api_Client {
 				'host'    => $this->host_label(),
 				'message' => sprintf(
 					/* translators: 1: scheduler hostname, 2: number of groups */
-					_n( 'Connected to %1$s. Found %2$d group. Enter a group ID to list events.', 'Connected to %1$s. Found %2$d groups. Enter a group ID to list events.', count( $groups ), 'event-schedule-wp' ),
+					_n( 'Connected to %1$s. Found %2$d group. Enter a group ID to list events.', 'Connected to %1$s. Found %2$d groups. Enter a group ID to list events.', count( $groups ), 'events-apptoolstack-com' ),
 					$this->host_label(),
 					count( $groups )
 				),
@@ -64,7 +64,7 @@ class Eswp_Api_Client {
 			'host'    => $this->host_label(),
 			'message' => sprintf(
 				/* translators: 1: scheduler hostname, 2: number of upcoming events */
-				_n( 'Connected to %1$s. Found %2$d upcoming event.', 'Connected to %1$s. Found %2$d upcoming events.', count( $events ), 'event-schedule-wp' ),
+				_n( 'Connected to %1$s. Found %2$d upcoming event.', 'Connected to %1$s. Found %2$d upcoming events.', count( $events ), 'events-apptoolstack-com' ),
 				$this->host_label(),
 				count( $events )
 			),
@@ -90,7 +90,7 @@ class Eswp_Api_Client {
 	 */
 	public function list_events( array $args = array() ): array|WP_Error {
 		if ( empty( $this->group_ids() ) ) {
-			return new WP_Error( 'eswp_missing_groups', __( 'Enter the events.apptoolstack.com group ID.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_missing_groups', __( 'Enter the events.apptoolstack.com group ID.', 'events-apptoolstack-com' ) );
 		}
 
 		$filters = $this->event_filters( $args );
@@ -127,7 +127,7 @@ class Eswp_Api_Client {
 
 			$page = $response['data'] ?? array();
 			if ( ! is_array( $page ) ) {
-				return new WP_Error( 'eswp_invalid_response', __( 'The events API returned an unexpected payload.', 'event-schedule-wp' ) );
+				return new WP_Error( 'eswp_invalid_response', __( 'The events API returned an unexpected payload.', 'events-apptoolstack-com' ) );
 			}
 
 			foreach ( $page as $row ) {
@@ -157,7 +157,7 @@ class Eswp_Api_Client {
 	 */
 	public function request( string $method, string $path, array $query = array() ): array|WP_Error {
 		if ( 'GET' !== strtoupper( $method ) ) {
-			return new WP_Error( 'eswp_method', __( 'Only GET requests are allowed to the events.apptoolstack.com API.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_method', __( 'Only GET requests are allowed to the events.apptoolstack.com API.', 'events-apptoolstack-com' ) );
 		}
 
 		$token = $this->get_access_token();
@@ -176,7 +176,7 @@ class Eswp_Api_Client {
 		}
 
 		if ( ! Eswp_Security::is_safe_remote_url( $url, true ) ) {
-			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'events-apptoolstack-com' ) );
 		}
 
 		$response = wp_remote_request(
@@ -202,7 +202,7 @@ class Eswp_Api_Client {
 		if ( 401 === $code ) {
 			$base = $this->base_url();
 			Eswp_Cache::clear_token( is_wp_error( $base ) ? '' : $base );
-			return new WP_Error( 'eswp_unauthorized', __( 'The events API rejected the access token. Check the API key and secret.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_unauthorized', __( 'The events API rejected the access token. Check the API key and secret.', 'events-apptoolstack-com' ) );
 		}
 
 		if ( $code < 200 || $code >= 300 ) {
@@ -212,13 +212,13 @@ class Eswp_Api_Client {
 				$message
 					? sprintf(
 						/* translators: 1: HTTP status, 2: API error message */
-						__( 'Events API error %1$s: %2$s', 'event-schedule-wp' ),
+						__( 'Events API error %1$s: %2$s', 'events-apptoolstack-com' ),
 						$code,
 						$message
 					)
 					: sprintf(
 						/* translators: %d: HTTP status */
-						__( 'Events API returned HTTP %d.', 'event-schedule-wp' ),
+						__( 'Events API returned HTTP %d.', 'events-apptoolstack-com' ),
 						$code
 					)
 			);
@@ -244,7 +244,7 @@ class Eswp_Api_Client {
 		$client_secret = (string) ( $this->settings['client_secret'] ?? '' );
 
 		if ( '' === $client_id || '' === $client_secret ) {
-			return new WP_Error( 'eswp_missing_credentials', __( 'Enter the events.apptoolstack.com API key and secret.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_missing_credentials', __( 'Enter the events.apptoolstack.com API key and secret.', 'events-apptoolstack-com' ) );
 		}
 
 		$token_path = Eswp_Security::sanitize_api_path( (string) ( $this->settings['oauth_path'] ?? '/oauth/token' ), '/oauth/token' );
@@ -262,7 +262,7 @@ class Eswp_Api_Client {
 		}
 
 		if ( ! Eswp_Security::is_safe_remote_url( $token_url, true ) ) {
-			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'event-schedule-wp' ) );
+			return new WP_Error( 'eswp_unsafe_url', __( 'The events.apptoolstack.com URL is not a public HTTPS address.', 'events-apptoolstack-com' ) );
 		}
 
 		$response = wp_remote_post(
@@ -288,13 +288,13 @@ class Eswp_Api_Client {
 				$message
 					? sprintf(
 						/* translators: 1: HTTP status, 2: token error */
-						__( 'OAuth token request failed (%1$s): %2$s', 'event-schedule-wp' ),
+						__( 'OAuth token request failed (%1$s): %2$s', 'events-apptoolstack-com' ),
 						$code,
 						$message
 					)
 					: sprintf(
 						/* translators: %d: HTTP status */
-						__( 'OAuth token request failed with HTTP %d.', 'event-schedule-wp' ),
+						__( 'OAuth token request failed with HTTP %d.', 'events-apptoolstack-com' ),
 						$code
 					)
 			);
@@ -417,7 +417,7 @@ class Eswp_Api_Client {
 		if ( '' === $base ) {
 			return new WP_Error(
 				'eswp_missing_base_url',
-				__( 'Enter your events.apptoolstack.com URL, for example https://events.districta.com.', 'event-schedule-wp' )
+				__( 'Enter your events.apptoolstack.com URL, for example https://events.districta.com.', 'events-apptoolstack-com' )
 			);
 		}
 

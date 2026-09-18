@@ -30,7 +30,7 @@ class Eswp_Shortcode {
 				'show_category'   => (string) (int) $settings['show_category'],
 				'show_ceu'        => (string) (int) $settings['show_ceu'],
 				'calendar_url'    => (string) $settings['calendar_url'],
-				'title'           => __( 'Upcoming Events', 'event-schedule-wp' ),
+				'title'           => __( 'Upcoming Events', 'events-apptoolstack-com' ),
 				'open_in_new_tab' => '0',
 			),
 			is_array( $atts ) ? $atts : array(),

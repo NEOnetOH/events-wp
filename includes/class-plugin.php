@@ -41,7 +41,7 @@ class Eswp_Plugin {
 
 	public function load_textdomain(): void {
 		load_plugin_textdomain(
-			'event-schedule-wp',
+			'events-apptoolstack-com',
 			false,
 			dirname( plugin_basename( ESWP_FILE ) ) . '/languages'
 		);

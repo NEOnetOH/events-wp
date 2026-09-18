@@ -14,9 +14,9 @@ class Eswp_Widget extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'eswp_upcoming',
-			__( 'events.apptoolstack.com: Upcoming Events', 'event-schedule-wp' ),
+			__( 'events.apptoolstack.com: Upcoming Events', 'events-apptoolstack-com' ),
 			array(
-				'description'           => __( 'Show live events.apptoolstack.com events in a sidebar or widget area.', 'event-schedule-wp' ),
+				'description'           => __( 'Show live events.apptoolstack.com events in a sidebar or widget area.', 'events-apptoolstack-com' ),
 				'show_instance_in_rest' => true,
 			)
 		);
@@ -28,7 +28,7 @@ class Eswp_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ): void {
 		$settings         = Eswp_Settings::get();
-		$title            = isset( $instance['title'] ) ? (string) $instance['title'] : __( 'Upcoming Events', 'event-schedule-wp' );
+		$title            = isset( $instance['title'] ) ? (string) $instance['title'] : __( 'Upcoming Events', 'events-apptoolstack-com' );
 		$limit            = isset( $instance['limit'] ) ? (int) $instance['limit'] : (int) $settings['event_limit'];
 		$days             = isset( $instance['days'] ) ? (int) $instance['days'] : (int) $settings['lookahead_days'];
 		$category_ids     = isset( $instance['category_ids'] ) ? (string) $instance['category_ids'] : '';
@@ -69,32 +69,32 @@ class Eswp_Widget extends WP_Widget {
 	 * @param array<string, mixed> $instance
 	 */
 	public function form( $instance ): void {
-		$title            = isset( $instance['title'] ) ? (string) $instance['title'] : __( 'Upcoming Events', 'event-schedule-wp' );
+		$title            = isset( $instance['title'] ) ? (string) $instance['title'] : __( 'Upcoming Events', 'events-apptoolstack-com' );
 		$limit            = isset( $instance['limit'] ) ? (int) $instance['limit'] : 6;
 		$days             = isset( $instance['days'] ) ? (int) $instance['days'] : 90;
 		$category_ids     = isset( $instance['category_ids'] ) ? (string) $instance['category_ids'] : '';
 		$open_in_new_tab  = ! empty( $instance['open_in_new_tab'] );
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'event-schedule-wp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'events-apptoolstack-com' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Number of events', 'event-schedule-wp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Number of events', 'events-apptoolstack-com' ); ?></label>
 			<input class="tiny-text" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" type="number" min="1" max="50" value="<?php echo esc_attr( (string) $limit ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'days' ) ); ?>"><?php esc_html_e( 'Show events this many days ahead (0 = no date cap)', 'event-schedule-wp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'days' ) ); ?>"><?php esc_html_e( 'Show events this many days ahead (0 = no date cap)', 'events-apptoolstack-com' ); ?></label>
 			<input class="small-text" id="<?php echo esc_attr( $this->get_field_id( 'days' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'days' ) ); ?>" type="number" min="0" max="3650" value="<?php echo esc_attr( (string) $days ); ?>" />
 		</p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'category_ids' ) ); ?>"><?php esc_html_e( 'Category IDs (comma-separated)', 'event-schedule-wp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'category_ids' ) ); ?>"><?php esc_html_e( 'Category IDs (comma-separated)', 'events-apptoolstack-com' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'category_ids' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'category_ids' ) ); ?>" type="text" value="<?php echo esc_attr( $category_ids ); ?>" placeholder="12, 34" />
-			<small><?php esc_html_e( 'Limit this widget to specific categories (e.g. events for one department). Overrides the global Category IDs setting. Leave blank to use the global setting.', 'event-schedule-wp' ); ?></small>
+			<small><?php esc_html_e( 'Limit this widget to specific categories (e.g. events for one department). Overrides the global Category IDs setting. Leave blank to use the global setting.', 'events-apptoolstack-com' ); ?></small>
 		</p>
 		<p>
 			<input class="checkbox" type="checkbox"<?php checked( $open_in_new_tab ); ?> id="<?php echo esc_attr( $this->get_field_id( 'open_in_new_tab' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'open_in_new_tab' ) ); ?>" value="1" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'open_in_new_tab' ) ); ?>"><?php esc_html_e( 'Open event links in a new tab', 'event-schedule-wp' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'open_in_new_tab' ) ); ?>"><?php esc_html_e( 'Open event links in a new tab', 'events-apptoolstack-com' ); ?></label>
 		</p>
 		<?php
 	}
