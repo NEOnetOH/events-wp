@@ -1,12 +1,13 @@
 <?php
 /**
- * Plugin Name: Event Scheduler
- * Plugin URI: https://github.com/NEOnetOH/events-wp
- * Description: Securely display upcoming events from the Event Scheduler API using a WordPress widget.
- * Version: 1.1.0
+ * Plugin Name: events.apptoolstack.com
+ * Plugin URI: https://events.apptoolstack.com
+ * Description: Display upcoming events from events.apptoolstack.com using a WordPress widget.
+ * Version: 1.3.0
  * Requires at least: 6.5
  * Requires PHP: 8.1
  * Author: NEOnet
+ * Author URI: https://events.apptoolstack.com
  * License: GPL-2.0-or-later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: event-schedule-wp
@@ -19,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ESWP_VERSION', '1.1.0' );
+define( 'ESWP_VERSION', '1.3.0' );
 define( 'ESWP_FILE', __FILE__ );
 define( 'ESWP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ESWP_URL', plugin_dir_url( __FILE__ ) );

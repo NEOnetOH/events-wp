@@ -52,7 +52,7 @@ class Eswp_Settings {
 	}
 
 	/**
-	 * Accept a full URL or a hostname from any Event Scheduler customer.
+	 * Accept a full URL or a hostname from any events.apptoolstack.com host.
 	 *
 	 * events.districta.com and https://events.districtb.com/ become a clean
 	 * HTTPS origin. Private, loopback, and non-HTTPS targets are rejected.
@@ -127,8 +127,8 @@ class Eswp_Settings {
 
 	public function add_page(): void {
 		add_options_page(
-			__( 'Event Scheduler', 'event-schedule-wp' ),
-			__( 'Event Scheduler', 'event-schedule-wp' ),
+			__( 'events.apptoolstack.com', 'event-schedule-wp' ),
+			__( 'events.apptoolstack.com', 'event-schedule-wp' ),
 			'manage_options',
 			'event-schedule-wp',
 			array( $this, 'render_page' )
@@ -252,8 +252,8 @@ class Eswp_Settings {
 
 		?>
 		<div class="wrap eswp-settings">
-			<h1><?php esc_html_e( 'Event Scheduler', 'event-schedule-wp' ); ?></h1>
-			<p><?php esc_html_e( 'This plugin lists live events from Event Scheduler. The required settings are the Event Scheduler URL, API key, secret, and group ID. Then publish the list with the Upcoming Events widget. Events, categories, and venues stay in Event Scheduler.', 'event-schedule-wp' ); ?></p>
+			<h1><?php esc_html_e( 'events.apptoolstack.com', 'event-schedule-wp' ); ?></h1>
+			<p><?php esc_html_e( 'This plugin lists live events from events.apptoolstack.com. The required settings are the host URL, API key, secret, and group ID. Then publish the list with the Upcoming Events widget. Events, categories, and venues stay in events.apptoolstack.com.', 'event-schedule-wp' ); ?></p>
 			<?php $this->render_connection_card( self::get() ); ?>
 
 			<form action="options.php" method="post">
@@ -280,7 +280,7 @@ class Eswp_Settings {
 		echo '<p>' . wp_kses(
 			sprintf(
 				/* translators: %s: Appearance → Widgets admin URL */
-				__( 'The main way to publish events is the <strong>Event Scheduler: Upcoming Events</strong> widget. Add it under <a href="%s">Appearance → Widgets</a>. A shortcode and block are available if a page builder needs them.', 'event-schedule-wp' ),
+				__( 'The main way to publish events is the <strong>events.apptoolstack.com: Upcoming Events</strong> widget. Add it under <a href="%s">Appearance → Widgets</a>. A shortcode and block are available if a page builder needs them.', 'event-schedule-wp' ),
 				esc_url( $widgets )
 			),
 			array(
@@ -291,7 +291,7 @@ class Eswp_Settings {
 	}
 
 	public function render_api_intro(): void {
-		echo '<p>' . esc_html__( 'Required configuration: Event Scheduler URL, API key, secret, and group ID. Those four values come from this organization’s Event Scheduler. Connect can fill them in, or enter them by hand and save.', 'event-schedule-wp' ) . '</p>';
+		echo '<p>' . esc_html__( 'Required configuration: host URL, API key, secret, and group ID. Those four values come from this organization’s events.apptoolstack.com host. Connect can fill them in, or enter them by hand and save.', 'event-schedule-wp' ) . '</p>';
 	}
 
 	/**
@@ -380,32 +380,32 @@ class Eswp_Settings {
 		return array(
 			array(
 				'id'          => 'api_base_url',
-				'label'       => __( 'Event Scheduler URL', 'event-schedule-wp' ),
+				'label'       => __( 'Host URL', 'event-schedule-wp' ),
 				'type'        => 'text',
 				'section'     => 'eswp_api',
 				'placeholder' => 'https://events.districta.com',
-				'help'        => __( 'Required. This organization’s public HTTPS scheduler hostname, such as https://events.districta.com. Localhost and private IPs are rejected.', 'event-schedule-wp' ),
+				'help'        => __( 'Required. This organization’s public HTTPS events.apptoolstack.com hostname, or a custom domain such as https://events.districta.com. Localhost and private IPs are rejected.', 'event-schedule-wp' ),
 			),
 			array(
 				'id'      => 'client_id',
 				'label'   => __( 'API key', 'event-schedule-wp' ),
 				'type'    => 'text',
 				'section' => 'eswp_api',
-				'help'    => __( 'Required. The Event Scheduler API key (OAuth client ID). Created in Event Scheduler, not in WordPress.', 'event-schedule-wp' ),
+				'help'    => __( 'Required. The events.apptoolstack.com API key (OAuth client ID). Created in events.apptoolstack.com, not in WordPress.', 'event-schedule-wp' ),
 			),
 			array(
 				'id'      => 'client_secret',
 				'label'   => __( 'Secret', 'event-schedule-wp' ),
 				'type'    => 'password',
 				'section' => 'eswp_api',
-				'help'    => __( 'Required. The Event Scheduler API secret (OAuth client secret). Leave blank to keep the saved secret.', 'event-schedule-wp' ),
+				'help'    => __( 'Required. The events.apptoolstack.com API secret (OAuth client secret). Leave blank to keep the saved secret.', 'event-schedule-wp' ),
 			),
 			array(
 				'id'      => 'group_ids',
 				'label'   => __( 'Group ID', 'event-schedule-wp' ),
 				'type'    => 'text',
 				'section' => 'eswp_api',
-				'help'    => __( 'Required. The Event Scheduler group this site should list. Use a comma-separated list only if more than one group is needed.', 'event-schedule-wp' ),
+				'help'    => __( 'Required. The events.apptoolstack.com group this site should list. Use a comma-separated list only if more than one group is needed.', 'event-schedule-wp' ),
 			),
 			array(
 				'id'      => 'category_ids',
@@ -440,11 +440,12 @@ class Eswp_Settings {
 				'help'    => __( 'Only include events that start within this many days. 30 is about a month, 90 a quarter, 365 a year. 0 means no date cap — only the event limit applies.', 'event-schedule-wp' ),
 			),
 			array(
-				'id'      => 'calendar_url',
-				'label'   => __( 'Calendar URL', 'event-schedule-wp' ),
-				'type'    => 'url',
-				'section' => 'eswp_display',
-				'help'    => __( '“View Calendar” link on this WordPress site, such as /events or a full page URL.', 'event-schedule-wp' ),
+				'id'          => 'calendar_url',
+				'label'       => __( 'Calendar URL', 'event-schedule-wp' ),
+				'type'        => 'text',
+				'section'     => 'eswp_display',
+				'placeholder' => '/events',
+				'help'        => __( 'Where the “View Calendar” footer link (under the upcoming-events list) should point. Enter a path on this WordPress site, such as /events, or a full https:// URL. Leave blank to hide the link. This is a page on this WordPress site, not the events.apptoolstack.com host.', 'event-schedule-wp' ),
 			),
 			array(
 				'id'      => 'show_location',
@@ -504,7 +505,7 @@ class Eswp_Settings {
 			<h2><?php esc_html_e( 'This WordPress site talks to', 'event-schedule-wp' ); ?></h2>
 			<?php if ( '' === $host ) : ?>
 				<p class="eswp-connection-card__empty">
-					<?php esc_html_e( 'No Event Scheduler configured yet. Enter the Event Scheduler URL, API key, secret, and group ID below, or use Connect to fill them in.', 'event-schedule-wp' ); ?>
+					<?php esc_html_e( 'No events.apptoolstack.com host configured yet. Enter the host URL, API key, secret, and group ID below, or use Connect to fill them in.', 'event-schedule-wp' ); ?>
 				</p>
 			<?php else : ?>
 				<p class="eswp-connection-card__host">
@@ -514,7 +515,7 @@ class Eswp_Settings {
 					<?php endif; ?>
 				</p>
 				<p class="description">
-					<?php esc_html_e( 'Tokens and event caches are stored per host, so changing this URL switches the site to a different Event Scheduler customer without leftover data from the previous one.', 'event-schedule-wp' ); ?>
+					<?php esc_html_e( 'Tokens and event caches are stored per host, so changing this URL switches the site to a different events.apptoolstack.com customer without leftover data from the previous one.', 'event-schedule-wp' ); ?>
 				</p>
 			<?php endif; ?>
 
@@ -524,7 +525,7 @@ class Eswp_Settings {
 					<input type="hidden" name="action" value="eswp_connect_start" />
 					<input type="hidden" name="api_base_url" id="eswp-connect-url" value="<?php echo esc_attr( (string) ( $settings['api_base_url'] ?? '' ) ); ?>" />
 					<button type="submit" class="button button-primary">
-						<?php echo $connected ? esc_html__( 'Reconnect to Event Scheduler', 'event-schedule-wp' ) : esc_html__( 'Connect to Event Scheduler', 'event-schedule-wp' ); ?>
+						<?php echo $connected ? esc_html__( 'Reconnect to events.apptoolstack.com', 'event-schedule-wp' ) : esc_html__( 'Connect to events.apptoolstack.com', 'event-schedule-wp' ); ?>
 					</button>
 				</form>
 				<?php if ( $connected ) : ?>
@@ -538,7 +539,7 @@ class Eswp_Settings {
 				<?php endif; ?>
 			</div>
 			<p class="description">
-				<?php esc_html_e( 'Connect is optional. It asks an Event Scheduler admin to approve this site and writes the API key, secret, and group ID here. You can also paste those four values by hand.', 'event-schedule-wp' ); ?>
+				<?php esc_html_e( 'Connect is optional. It asks an events.apptoolstack.com admin to approve this site and writes the API key, secret, and group ID here. You can also paste those four values by hand.', 'event-schedule-wp' ); ?>
 			</p>
 		</div>
 		<?php

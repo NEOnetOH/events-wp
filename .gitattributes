@@ -1,0 +1,8 @@
+/.github export-ignore
+/.wordpress-org export-ignore
+/docs export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+.distignore export-ignore
+INSTALL.md export-ignore
+README.md export-ignore

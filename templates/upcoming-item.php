@@ -10,11 +10,15 @@
  * @var bool                 $show_location
  * @var bool                 $show_category
  * @var bool                 $show_ceu
+ * @var bool                 $open_in_new_tab
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+$open_in_new_tab = isset( $open_in_new_tab ) ? (bool) $open_in_new_tab : false;
+$link_target     = $open_in_new_tab ? ' target="_blank" rel="noopener noreferrer"' : '';
 
 $slot        = $event->next_slot( $now );
 $occurrence  = $slot['starts_at'] instanceof DateTimeImmutable ? $slot['starts_at'] : $event->starts_at;
@@ -52,7 +56,7 @@ if ( $occurrence instanceof DateTimeImmutable ) {
 	<div class="eswp-event__body">
 		<h3 class="eswp-event__title">
 			<?php if ( $permalink ) : ?>
-				<a href="<?php echo esc_url( $permalink ); ?>"><?php echo esc_html( $event->title ); ?></a>
+				<a href="<?php echo esc_url( $permalink ); ?>"<?php echo $link_target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo esc_html( $event->title ); ?></a>
 			<?php else : ?>
 				<?php echo esc_html( $event->title ); ?>
 			<?php endif; ?>
