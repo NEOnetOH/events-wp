@@ -54,14 +54,14 @@ class Eswp_Shortcode {
 		return Eswp_Query::render_template(
 			'upcoming-list.php',
 			array(
-				'events'          => $events,
-				'settings'        => $settings,
-				'title'           => sanitize_text_field( (string) $atts['title'] ),
-				'calendar_url'    => Eswp_Security::sanitize_calendar_url( (string) $atts['calendar_url'] ),
-				'show_location'   => $this->is_truthy( $atts['show_location'] ),
-				'show_category'   => $this->is_truthy( $atts['show_category'] ),
-				'show_ceu'        => $this->is_truthy( $atts['show_ceu'] ),
-				'open_in_new_tab' => $this->is_truthy( $atts['open_in_new_tab'] ),
+				'eswp_events'          => $events,
+				'eswp_settings'        => $settings,
+				'eswp_title'           => sanitize_text_field( (string) $atts['title'] ),
+				'eswp_calendar_url'    => Eswp_Security::sanitize_calendar_url( (string) $atts['calendar_url'] ),
+				'eswp_show_location'   => $this->is_truthy( $atts['show_location'] ),
+				'eswp_show_category'   => $this->is_truthy( $atts['show_category'] ),
+				'eswp_show_ceu'        => $this->is_truthy( $atts['show_ceu'] ),
+				'eswp_open_in_new_tab' => $this->is_truthy( $atts['open_in_new_tab'] ),
 			)
 		);
 	}
