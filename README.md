@@ -1,6 +1,6 @@
 # events.apptoolstack.com for WordPress
 
-A secure WordPress plugin that displays upcoming events from the [events.apptoolstack.com](https://events.apptoolstack.com) API. It does not create events, categories, or venues in WordPress.
+Official [NEOnet](https://www.neonet.org) WordPress plugin for NEOnet’s AppToolStack Events product at [events.apptoolstack.com](https://events.apptoolstack.com). It displays upcoming events from that API. It does not create events, categories, or venues in WordPress.
 
 **Customer deploy:** see [INSTALL.md](INSTALL.md).
 
