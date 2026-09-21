@@ -4,17 +4,17 @@ Tags: events, calendar, upcoming events, widget
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Display upcoming events from events.apptoolstack.com using a WordPress widget.
+Official NEOnet plugin for AppToolStack Events (events.apptoolstack.com). Display upcoming events with a WordPress widget.
 
 == Description ==
 
-events.apptoolstack.com for WordPress lists live upcoming events from a customer events.apptoolstack.com host.
+This is the official WordPress plugin by [NEOnet](https://www.neonet.org) for NEOnet’s AppToolStack Events product at [events.apptoolstack.com](https://events.apptoolstack.com). It lists live upcoming events from a customer AppToolStack Events host.
 
-This plugin is a companion to the [events.apptoolstack.com](https://events.apptoolstack.com) service. It does not create or edit events in WordPress. You need a working events.apptoolstack.com host, an API key, a secret, and a group ID.
+It does not create or edit events in WordPress. You need a working events.apptoolstack.com host, an API key, a secret, and a group ID.
 
 Required configuration: host URL, API key, secret, and group ID. Those values come from events.apptoolstack.com.
 
@@ -38,6 +38,10 @@ The main way to publish is the **events.apptoolstack.com: Upcoming Events** widg
 5. Go to Appearance → Widgets and add events.apptoolstack.com: Upcoming Events
 
 == Frequently Asked Questions ==
+
+= Who makes this plugin? =
+
+[NEOnet](https://www.neonet.org) (Northeast Ohio Network for Educational Technology). This is the official companion plugin for NEOnet’s AppToolStack Events product.
 
 = Does this plugin work without events.apptoolstack.com? =
 
@@ -74,6 +78,9 @@ This plugin contacts the events.apptoolstack.com host that a site administrator 
 Service terms: [events.apptoolstack.com](https://events.apptoolstack.com)
 
 == Changelog ==
+
+= 1.3.4 =
+* State that this is the official NEOnet plugin for AppToolStack Events.
 
 = 1.3.3 =
 * Plugin Check: escape template output correctly, use wp_safe_redirect for Connect, and prefix template variables.

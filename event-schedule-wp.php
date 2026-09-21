@@ -2,8 +2,8 @@
 /**
  * Plugin Name: events.apptoolstack.com
  * Plugin URI: https://github.com/NEOnetOH/events-wp
- * Description: Display upcoming events from events.apptoolstack.com using a WordPress widget.
- * Version: 1.3.3
+ * Description: Official NEOnet plugin for AppToolStack Events (events.apptoolstack.com). Display upcoming events with a WordPress widget.
+ * Version: 1.3.4
  * Requires at least: 6.5
  * Requires PHP: 8.1
  * Author: NEOnet
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ESWP_VERSION', '1.3.3' );
+define( 'ESWP_VERSION', '1.3.4' );
 define( 'ESWP_FILE', __FILE__ );
 define( 'ESWP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'ESWP_URL', plugin_dir_url( __FILE__ ) );
