@@ -417,7 +417,7 @@ class Eswp_Api_Client {
 		if ( '' === $base ) {
 			return new WP_Error(
 				'eswp_missing_base_url',
-				__( 'Enter your events.apptoolstack.com URL, for example https://events.districta.com.', 'events-apptoolstack-com' )
+				__( 'Enter your AppToolStack Events URL, for example https://events.districta.com.', 'events-apptoolstack-com' )
 			);
 		}
 

@@ -1,16 +1,16 @@
 # Deploy events.apptoolstack.com to a customer WordPress site
 
-This plugin displays **live upcoming events** from that customer’s events.apptoolstack.com host. It does not add events, categories, or venues in WordPress. Create and edit those in events.apptoolstack.com.
+This plugin displays **live upcoming events** from that customer’s AppToolStack Events host ([apptoolstack.com](https://apptoolstack.com)). It does not add events, categories, or venues in WordPress. Create and edit those in AppToolStack Events.
 
 ## Required configuration
 
-The plugin needs **four values** from the customer’s events.apptoolstack.com host. Without all four, the widget cannot list events.
+The plugin needs **four values** from the customer’s AppToolStack Events host. Without all four, the widget cannot list events.
 
 | Setting | What it is | Example |
 | --- | --- | --- |
 | **Host URL** | The customer’s public scheduler hostname | `https://events.districtname.org` |
-| **API key** | The events.apptoolstack.com API key (OAuth client ID) | Issued in events.apptoolstack.com |
-| **Secret** | The events.apptoolstack.com API secret (OAuth client secret) | Issued with the API key |
+| **API key** | The AppToolStack Events API key (OAuth client ID) | Issued in AppToolStack Events |
+| **Secret** | The AppToolStack Events API secret (OAuth client secret) | Issued with the API key |
 | **Group ID** | The group whose public events this site should show | `216` |
 
 These come from events.apptoolstack.com, not WordPress. You can enter them by hand on **Settings → events.apptoolstack.com** and click **Save Changes**, or use **Connect to events.apptoolstack.com** to have the host fill them in.
@@ -29,7 +29,7 @@ The host URL is the scheduler host, not the WordPress site. You can paste `event
 ## 1. Install the plugin
 
 1. In WordPress, go to **Plugins → Add New Plugin → Upload Plugin**.
-2. Upload `events-apptoolstack-com-1.3.4.zip`.
+2. Upload `events-apptoolstack-com-1.3.5.zip`.
 3. Click **Install Now**, then **Activate**.
 
 The plugin name in the list is **events.apptoolstack.com**.

@@ -4,21 +4,21 @@ Tags: events, calendar, upcoming events, widget
 Requires at least: 6.5
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 1.3.4
+Stable tag: 1.3.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Official NEOnet plugin for AppToolStack Events (events.apptoolstack.com). Display upcoming events with a WordPress widget.
+Official NEOnet plugin for AppToolStack Events (apptoolstack.com). Display upcoming events with a WordPress widget.
 
 == Description ==
 
-This is the official WordPress plugin by [NEOnet](https://www.neonet.org) for NEOnet’s AppToolStack Events product at [events.apptoolstack.com](https://events.apptoolstack.com). It lists live upcoming events from a customer AppToolStack Events host.
+This is the official WordPress plugin by [NEOnet](https://www.neonet.org) for NEOnet’s AppToolStack Events product at [apptoolstack.com](https://apptoolstack.com). It lists live upcoming events from a customer AppToolStack Events host.
 
-It does not create or edit events in WordPress. You need a working events.apptoolstack.com host, an API key, a secret, and a group ID.
+It does not create or edit events in WordPress. You need a working AppToolStack Events host, an API key, a secret, and a group ID.
 
-Required configuration: host URL, API key, secret, and group ID. Those values come from events.apptoolstack.com.
+Required configuration: host URL, API key, secret, and group ID. Those values come from AppToolStack Events.
 
-Events, categories, and venues stay in events.apptoolstack.com. This plugin does not add those editors to WordPress.
+Events, categories, and venues stay in AppToolStack Events. This plugin does not add those editors to WordPress.
 
 The main way to publish is the **events.apptoolstack.com: Upcoming Events** widget under Appearance → Widgets.
 
@@ -41,15 +41,15 @@ The main way to publish is the **events.apptoolstack.com: Upcoming Events** widg
 
 = Who makes this plugin? =
 
-[NEOnet](https://www.neonet.org) (Northeast Ohio Network for Educational Technology). This is the official companion plugin for NEOnet’s AppToolStack Events product.
+[NEOnet](https://www.neonet.org) (Northeast Ohio Network for Educational Technology). This is the official companion plugin for NEOnet’s AppToolStack Events product at [apptoolstack.com](https://apptoolstack.com).
 
-= Does this plugin work without events.apptoolstack.com? =
+= Does this plugin work without AppToolStack Events? =
 
-No. It displays public events from an events.apptoolstack.com host. Install it only if you already have that service, or plan to.
+No. It displays public events from an AppToolStack Events host. Install it only if you already have that service, or plan to.
 
 = Where do events get created? =
 
-In events.apptoolstack.com, not in WordPress. The widget reads the live API.
+In AppToolStack Events, not in WordPress. The widget reads the live API.
 
 = What data does the plugin send? =
 
@@ -67,17 +67,20 @@ Yes. Add more than one widget and set Category IDs on each, or use the `[event_s
 
 == Privacy ==
 
-This plugin contacts the events.apptoolstack.com host that a site administrator configures. It does not phone home to WordPress.org or to a shared NEOnet server unless that is the host the administrator entered.
+This plugin contacts the AppToolStack Events host that a site administrator configures. It does not phone home to WordPress.org or to a shared NEOnet server unless that is the host the administrator entered.
 
 * **Host URL, API key, secret, and group ID** are stored in the WordPress database on this site. The secret is stored separately and is not autoloaded.
-* **Connect** sends the WordPress site URL and site name to the configured host so an events.apptoolstack.com administrator can approve access.
+* **Connect** sends the WordPress site URL and site name to the configured host so an AppToolStack Events administrator can approve access.
 * **API requests** send an OAuth access token and a User-Agent that includes this site’s URL.
 * **Front-end output** shows public event titles and times. Venue names appear only if “Show location” is enabled. Private events are not listed.
 * Uninstalling the plugin removes its options and cached tokens from this site.
 
-Service terms: [events.apptoolstack.com](https://events.apptoolstack.com)
+Service terms: [apptoolstack.com](https://apptoolstack.com)
 
 == Changelog ==
+
+= 1.3.5 =
+* Public product URL is https://apptoolstack.com. Plugin URI points there; Author URI stays neonet.org.
 
 = 1.3.4 =
 * State that this is the official NEOnet plugin for AppToolStack Events.
