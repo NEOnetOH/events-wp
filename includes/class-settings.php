@@ -384,14 +384,14 @@ class Eswp_Settings {
 				'type'        => 'text',
 				'section'     => 'eswp_api',
 				'placeholder' => 'https://events.districta.com',
-				'help'        => __( 'Required. This organization’s public HTTPS events.apptoolstack.com hostname, or a custom domain such as https://events.districta.com. Localhost and private IPs are rejected.', 'events-apptoolstack-com' ),
+				'help'        => __( 'Required. This organization’s public HTTPS AppToolStack Events hostname, such as https://events.districta.com. Localhost and private IPs are rejected.', 'events-apptoolstack-com' ),
 			),
 			array(
 				'id'      => 'client_id',
 				'label'   => __( 'API key', 'events-apptoolstack-com' ),
 				'type'    => 'text',
 				'section' => 'eswp_api',
-				'help'    => __( 'Required. The events.apptoolstack.com API key (OAuth client ID). Created in events.apptoolstack.com, not in WordPress.', 'events-apptoolstack-com' ),
+				'help'    => __( 'Required. The AppToolStack Events API key (OAuth client ID). Created in AppToolStack Events, not in WordPress.', 'events-apptoolstack-com' ),
 			),
 			array(
 				'id'      => 'client_secret',

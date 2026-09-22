@@ -1,6 +1,6 @@
 # events.apptoolstack.com for WordPress
 
-Official [NEOnet](https://www.neonet.org) WordPress plugin for NEOnet’s AppToolStack Events product at [events.apptoolstack.com](https://events.apptoolstack.com). It displays upcoming events from that API. It does not create events, categories, or venues in WordPress.
+Official [NEOnet](https://www.neonet.org) WordPress plugin for NEOnet’s AppToolStack Events product at [apptoolstack.com](https://apptoolstack.com). It displays upcoming events from that API. It does not create events, categories, or venues in WordPress.
 
 **Customer deploy:** see [INSTALL.md](INSTALL.md).
 
@@ -8,7 +8,7 @@ WordPress.org updates (after the directory listing is approved) come from wordpr
 
 ## How it works
 
-The plugin needs four settings from events.apptoolstack.com:
+The plugin needs four settings from AppToolStack Events:
 
 1. **Host URL** — the customer host (`https://events.districta.org`)
 2. **API key** — OAuth client ID
@@ -33,7 +33,7 @@ The widget reads the live Events API. There is no local event editor and no requ
 
 - WordPress 6.5+
 - PHP 8.1+
-- events.apptoolstack.com 1.136.0+ with `/api/v2` and the WordPress connect handshake
+- AppToolStack Events 1.136.0+ with `/api/v2` and the WordPress connect handshake
 
 ## Branches
 
